@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <script src="jquery-1.11.3.min.js"></script>
+  <script src="jquery.qrcode.js"></script>
+</head>
+
+<body>
+  <div id="wraper" style="width:200px;">
+    <h3 style="width:100%;text-align:center;margin:10px 0;" id="title">手机扫一扫访问</h3>
+    <div style="font-size:12px;margin:5px 0;">
+    <div id="code" style="width:100%;"></div>
+    <input type="text" placeholder="输入要生成的内容" id="content" style="display:block;height:30px;width:100%;border-radius:4px;-webkit-border-radius:4px;outline:none;margin:5px auto;border:solid 1px #ccc;text-indent:5px;">
+    <div style="width:100%;text-align:center;letter-spacing:-4px;">
+      <button id="clear" style="height:30px;width:50%;display:inline-block;margin:0;background-color:#ccc;color:#fff;border:none;outline:none;text-align:center;line-height:30px;cursor:pointer;">清空</button>
+      <button style="height:30px;width:50%;display:inline-block;margin:0;background-color:green;color:#fff;border:none;outline:none;text-align:center;line-height:30px;cursor:pointer;"
+        id="render">生成</button>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+
+</html>

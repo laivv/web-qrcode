@@ -1,0 +1,25 @@
+{ 
+"manifest_version": 2, 
+"name": "二维码生成器", 
+"version": "1.0", 
+"author": "lingluo",
+"description": "用于将链接或自定义内容生成二维码的扩展程序", 
+"browser_action": { 
+"default_icon": "ico.png",
+"default_popup":"popup.html"
+}, 
+"icons":{"128":"ico128.png","48":"ico48.png","16":"ico16.png"},
+"permissions": [ 
+"*://*/",
+"tabs",
+"contextMenus"
+],
+"background":{
+	"scripts":["background.js"]
+},
+"content_scripts":[{
+	"matches": ["*://*/*"],
+	"js":["jquery-1.11.3.min.js","jquery.qrcode.js","content_script.js","qrcode.min.js"],
+	"css":["content_style.css"]
+	}]
+}
