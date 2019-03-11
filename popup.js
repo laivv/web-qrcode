@@ -1,44 +1,38 @@
 var scale = chrome.extension.getBackgroundPage().scale;
-if(typeof scale === 'undefined')
-{
-	scale = 1;
-}
-else
-{
-	$("#size").val(scale);
-}
-var scaleDict=[200,200,250,300,350,400];
-var url;
 var toUtf8 = chrome.extension.getBackgroundPage().toUtf8;
- chrome.tabs.query({active: true},function(tab){
- 	url = tab[0].url
- 	code($("#code"),scale,url);
- 	// $("#title").text("已生成当前网址二维码");
- 	$("#content").val(url);
+var code = document.getElementById('code');
+var input = document.getElementById('content');
+
+var renderCode = (function() {
+	var mQrcode;
+	return function(text) {
+		input.value = text;
+		text = toUtf8(text);
+		if (mQrcode) {
+			mQrcode.clear();
+			mQrcode.makeCode(text);
+		} else {
+			mQrcode = new QRCode(code, {
+				text: text,
+				width: 200,
+				height: 200,
+				colorDark: '#000000',
+				colorLight: '#ffffff',
+				correctLevel: QRCode.CorrectLevel.H
+			});
+		}
+	};
+})();
+
+chrome.tabs.query({ active: true }, function(tab) {
+	renderCode(tab[0].url);
 });
 
-function code(c,s,str)
-{
-
-	s = typeof s === 'undefined'?200:scaleDict[s];
-	$("#wraper").width(s);
-
-	c.empty().qrcode({width:s,height:s,text:str});
-}
-
-	
-$("#size").on("change",function(){
-	scale = chrome.extension.getBackgroundPage().scale = $(this).val();
-
-	code($("#code"),scale,url);
+document.getElementById('render').addEventListener('click', function() {
+	renderCode(input.value);
 });
 
-$("#render").on("click",function(){
-	url = toUtf8($("#content").val());
-	code($("#code"),scale,url);
-	// $("#title").text("已生成自定义内容二维码");
-});
-
-$("#clear").on("click",function(){
-	$("#content").val("").focus();
+document.getElementById('clear').addEventListener('click', function() {
+	input.value = '';
+	input.focus();
 });
