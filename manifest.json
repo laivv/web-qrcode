@@ -19,7 +19,7 @@
 },
 "content_scripts":[{
 	"matches": ["*://*/*"],
-	"js":["jquery-1.11.3.min.js","jquery.qrcode.js","content_script.js","qrcode.min.js"],
+	"js":["content_script.js","qrcode.min.js"],
 	"css":["content_style.css"]
 	}]
 }
