@@ -11,6 +11,7 @@ function init() {
 	var template =
 		"<div id='chrome-extension-qrcode' style='display:none'>" +
 		"<div id='chrome-extension-qrcode-inner'>" +
+		"<div id='chrome-extension-qrcode-title'>手机扫一扫</div>" +
 		"<div id='chrome-extension-qrcode-content'>" +
 		'</div>' +
 		'</div>' +

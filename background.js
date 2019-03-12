@@ -1,4 +1,5 @@
-var scale = 100;
+var popupScale = 1;
+var contentScale = 1;
 chrome.contextMenus.create({
 	id: 'text',
 	title: "选中的文字: '%s'",
