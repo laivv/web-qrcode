@@ -27,36 +27,52 @@
       -webkit-box-sizing: border-box;
       padding:0 5px;
     }
-    .button-group{
-      letter-spacing:-4px;
+    .button-group::after{
+      content: '';
+      display: block;
+      height: 0;
+      visibility: hidden;
+      clear: both;
     }
-    .btn-item{
+    .btn{
       height:30px;
-      width:50%;
+      width:35%;
       line-height:30px;
-      display:inline-block;
       margin:0;
       color:#fff;
       outline:none;
       cursor:pointer;
       border:none;
+      float: left;
+      box-sizing: border-box;
+      -webkit-box-sizing: border-box;
     }
-    .btn-clear{
+    .btn-default{
       background-color:#ccc;
     }
-    .btn-generate{
+    .btn-primary{
       background-color:#020202;
+    }
+    .btn.btn-sm{
+      width:15%;
+      font-size: 18px;
+      vertical-align: middle;
+    }
+    .btn-large{
+      border-left: solid 1px #fff;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h3 class="row text-center title">手机扫一扫访问</h3>
+  <div class="container" id="container">
+    <h3 class="row text-center title">手机扫一扫</h3>
     <div id="code" class="row"></div>
     <input type="text" placeholder="输入要生成的内容" id="content" class="row input">
     <div class="row text-center button-group">
-      <button id="clear" class="btn-item btn-clear text-center">清空</button>
-      <button id="render" class="btn-item btn-generate text-center">生成</button>
+      <button class="btn btn-sm btn-primary text-center btn-mini" data-action="DOWN">-</button>
+      <button class="btn btn-sm btn-primary text-center btn-large" data-action="UP">+</button>
+      <button class="btn btn-default text-center" data-action="CLEAR">清空</button>
+      <button class="btn btn-primary text-center" data-action="GENERATE">生成</button>
     </div>
   <script src="qrcode.min.js"></script>
   <script src="popup.js"></script>
